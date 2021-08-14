@@ -1,0 +1,17 @@
+{
+  "workspace": "./gscript_workspace",
+  "sequences": [
+    {
+      "id": "test_1",
+      "duration": 1,
+      "nodes": [
+        {
+          "id": "1",
+          "img": "1.png",
+          "rects": [[0,0,1,1]],
+          "event": {"type": "click", "params":[1,1]}
+        }
+      ]
+    }
+  ]
+}
