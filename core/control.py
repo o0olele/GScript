@@ -7,11 +7,19 @@ class Controller:
         top controller
         """
         self.win = None
+        self.pil = None
 
     def win_list(self):
         return WinList()
 
     def win_init(self, name: str):
         self.win = Window(name)
+
+    def win_cap(self):
+        assert isinstance(self.win, Window)
+
+        self.pil = self.win.cap_pil()
+
+        return self.pil
 
 gcore = Controller()
