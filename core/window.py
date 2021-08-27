@@ -47,6 +47,10 @@ class Window:
 
         return cv2.cvtColor(numpy.array(img), cv2.COLOR_RGB2BGR)
 
+    def size(self):
+        bbox = win32gui.GetWindowRect(self.hwnd)
+        return bbox
+
     def click(self, x, y):
         lParam = win32api.MAKELONG(x, y)
 
