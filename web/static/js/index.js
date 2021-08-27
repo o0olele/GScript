@@ -11,5 +11,31 @@ var app = new Vue({
         console.log(error);
       });
   },
+  methods: {
+    onLive: function () {
+      var winName = $("#i_win").val();
+
+      if (winName.length <= 0) {
+        console.log("please choose window first!");
+        return;
+      }
+
+      axios
+        .get("/win/init", {
+          params: {
+            win: winName,
+          },
+        })
+        .then(function (response) {
+          var ret = response.data;
+
+          if (ret.errcode != 0) {
+            return
+          }
+
+          window.location.href = "/live";
+        });
+    },
+  },
   delimiters: ["[[", "]]"],
 });
