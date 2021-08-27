@@ -25,4 +25,7 @@ class Controller:
         assert isinstance(self.win, Window)
         return self.win.size()
 
+    def win_ok(self):
+        return self.win is not None
+
 gcore = Controller()
