@@ -17,9 +17,12 @@ class Controller:
 
     def win_cap(self):
         assert isinstance(self.win, Window)
-
         self.pil = self.win.cap_pil()
 
         return self.pil
+
+    def win_size(self):
+        assert isinstance(self.win, Window)
+        return self.win.size()
 
 gcore = Controller()
