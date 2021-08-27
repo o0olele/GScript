@@ -1,7 +1,7 @@
 import os
 
 from io import BytesIO
-from flask import Flask, render_template, send_file, jsonify
+from flask import Flask, render_template, send_file, jsonify, request, redirect, url_for
 from core import gcore
 
 def wrap_resp(data, err):
@@ -25,7 +25,15 @@ def create_app():
 
     @app.route('/win/init')
     def wininit():
+        win = request.args["win"]
+        gcore.win_init(win)
         return wrap_resp(None, 0)
+
+    @app.route('/win/size')
+    def winsize():
+        size = gcore.win_size()
+        return wrap_resp(size, 0)
+
 
     @app.route('/win/click')
     def winclick():
@@ -33,12 +41,17 @@ def create_app():
 
     @app.route('/img')
     def img():
-        gcore.win_init("嘉定组集团董事峰会")
         img = gcore.win_cap()
         return serve_pil_image(img)
 
     @app.route('/')
     def index():
         return render_template('index.html')
+
+    @app.route('/live')
+    def live():
+        if not gcore.win_ok():
+            return redirect('/')
+        return render_template('live.html')
 
     return app
