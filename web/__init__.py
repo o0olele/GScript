@@ -16,6 +16,7 @@ def serve_pil_image(pil_img):
     img_io.seek(0)
     return send_file(img_io, mimetype='image/png')
 
+
 def create_app():
     app = Flask(__name__)
 
