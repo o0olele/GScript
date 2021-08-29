@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/css/bootstrap-select.min.css" />
-  <link rel="stylesheet" href="./static/css/index.css" />
+  <link rel="stylesheet" href="./static/css/live.css" />
 
   <!-- 选项 1：jQuery 和 Bootstrap 集成包（集成了 Popper） -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
@@ -25,17 +25,10 @@
 
 <body>
   <div id="app">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <canvas id="i_canvas"></canvas>
-          <button class="btn btn-primary" v-on:click="sizedCanvas">refresh</button>
-        </div>
-        <div class="col-md-4"></div>
-      </div>
+    <span>[[x]], [[y]]</span>
+        <canvas id="i_canvas" @mousemove="onMove" v-on:click="onClick"></canvas>
+        <button class="btn btn-primary" v-on:click="updateCanvas">refresh</button>
     </div>
-  </div>
   <!-- custom js -->
   <script src="./static/js/live.js"></script>
 </body>

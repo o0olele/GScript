@@ -1,4 +1,4 @@
 .g_center {
-    margin-left: 50%;
-    margin-right: 50%;
+    margin: 0 auto;
+    display: block;
 }
