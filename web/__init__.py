@@ -27,7 +27,7 @@ def create_app():
     @app.route('/win/init')
     def wininit():
         win = request.args["win"]
-        gcore.win_init(win)
+        gcore.win_init(win, True)
         return wrap_resp(None, 0)
 
     @app.route('/win/size')
@@ -38,12 +38,17 @@ def create_app():
 
     @app.route('/win/click')
     def winclick():
+        x = int(request.args["x"])
+        y = int(request.args["y"])
+
+        gcore.win_click(x, y)
+
         return wrap_resp(None, 0)
 
     @app.route('/img')
     def img():
         img = gcore.win_cap()
-        return serve_pil_image(img)
+        return send_file(img, mimetype='image/png')
 
     @app.route('/')
     def index():
