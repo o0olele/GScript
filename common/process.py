@@ -6,8 +6,10 @@ Btn_Confirm = 'confirm'
 Btn_All_Retire = 'all_retire'
 Btn_Attack_Again = 'attack_again'
 Btn_Full_Quary = 'full_quary'
+Btn_Run = "run"
+Btn_GetObj = "get_obj"
 
-Aims = [Btn_Confirm, Btn_All_Retire, Btn_Attack_Again, Btn_Full_Quary]
+Aims = [Btn_Confirm, Btn_All_Retire, Btn_Attack_Again, Btn_Full_Quary, Btn_GetObj, Btn_Run]
 
 class TemplMgr:
     def __init__(self, dir: str):
@@ -80,3 +82,13 @@ class WindowMgr:
         hWnd1 = win32gui.FindWindowEx(self.hwnd, None, None, None)
         win32gui.SendMessage(hWnd1, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, lParam)
         win32gui.SendMessage(hWnd1, win32con.WM_LBUTTONUP, None, lParam)
+
+def GetWindows():
+    toplist, winlist = [], []
+
+    def enum_cb(hwnd, results):
+        winlist.append((hwnd, win32gui.GetWindowText(hwnd)))
+
+    win32gui.EnumWindows(enum_cb, toplist)
+
+    return winlist
