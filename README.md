@@ -11,6 +11,7 @@ pip install numpy opencv-contrib-python pywin32 Pillow pure-pthon-adb
 # Usages
 - Test for AzurLane
   - Set the window name to 'BlueStacks'
+  - using func `WinScript()`
   - run main.py
     ~~~shell
     python main.py
@@ -22,3 +23,10 @@ pip install numpy opencv-contrib-python pywin32 Pillow pure-pthon-adb
     [('confirm', (1115, 779))]
     [('confirm', (1115, 779))]
     ~~~~
+
+- Test for AzurLane using adb
+  - Set the adb path
+  - run main.py
+    ~~~shell
+    python main.py
+    ~~~
